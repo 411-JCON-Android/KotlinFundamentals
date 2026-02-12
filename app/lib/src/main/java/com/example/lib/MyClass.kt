@@ -47,18 +47,39 @@ fun main() {
 //    }
 
     // 5. ejemplo
-    println("Ingresa un número: ")
-    val input = readlnOrNull()
-    val num = input?.toInt()
 
-    if (num == null){
-        println("Ingresa un número válido")
-    } else if (num <2 || num % 2 == 0){
-        println("No es un primo")
-    } else if (num == 2){
-        println("Si es un primo")
+    // pedir número
+    var num : Int = 0
+    var respuesta : String = ""
+
+    println("Ingresa un numero: ")
+    val input = readln().toIntOrNull()
+    if (input == null){
+        respuesta = "Ingresa un numero valido"
+    } else {
+        num = input
+
+        // validaciones iniciales
+        if (num == 2) {
+            respuesta = "Si es un primo"
+        } else if (num < 2 || num % 2 == 0) {
+            respuesta = "No es un primo"
+        } else {
+            var i = 3
+            var esPrimo = true
+            while (i * i <= num) {
+                if (num % i == 0) {
+                    respuesta = "No es un primo"
+                    esPrimo = false
+                    break
+                }
+                i += 2
+            }
+            if (esPrimo) {
+                respuesta = "Si es un primo"
+            }
+        }
     }
-
-    while()
+    println(respuesta)
 
 }
